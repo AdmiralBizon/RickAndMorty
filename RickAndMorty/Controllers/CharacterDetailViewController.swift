@@ -18,14 +18,10 @@ class CharacterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //navigationItem.title = CharacterInfo.name
-        
         nameLabel.text = CharacterInfo.name
         
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.frame.height / 2
-        
-        
         
         setImage()
         

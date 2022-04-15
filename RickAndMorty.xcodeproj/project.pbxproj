@@ -17,7 +17,7 @@
 		093488F92808B34600F7B4ED /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093488F82808B34600F7B4ED /* Character.swift */; };
 		093488FE2808BCE900F7B4ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093488FD2808BCE900F7B4ED /* Constants.swift */; };
 		0937F7FD2809EE1400A3A272 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937F7FC2809EE1400A3A272 /* CharacterDetailViewController.swift */; };
-		0937F7FF280A010900A3A272 /* CharacterListV2TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937F7FE280A010900A3A272 /* CharacterListV2TableViewController.swift */; };
+		0937F7FF280A010900A3A272 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937F7FE280A010900A3A272 /* CharacterListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		093488F82808B34600F7B4ED /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		093488FD2808BCE900F7B4ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0937F7FC2809EE1400A3A272 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
-		0937F7FE280A010900A3A272 /* CharacterListV2TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListV2TableViewController.swift; sourceTree = "<group>"; };
+		0937F7FE280A010900A3A272 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +70,8 @@
 				093488FA2808B34D00F7B4ED /* Model */,
 				093488FB2808B60100F7B4ED /* Views */,
 				093488FC2808B62200F7B4ED /* Controllers */,
-				093488DD2808AA9700F7B4ED /* AppDelegate.swift */,
-				093488DF2808AA9700F7B4ED /* SceneDelegate.swift */,
-				093488E62808AA9A00F7B4ED /* Assets.xcassets */,
-				093488EB2808AA9A00F7B4ED /* Info.plist */,
-				093488FD2808BCE900F7B4ED /* Constants.swift */,
+				0937F801280A081E00A3A272 /* Supporting Files */,
+				0937F800280A07EF00A3A272 /* Resources */,
 			);
 			path = RickAndMorty;
 			sourceTree = "<group>";
@@ -109,9 +106,28 @@
 			isa = PBXGroup;
 			children = (
 				0937F7FC2809EE1400A3A272 /* CharacterDetailViewController.swift */,
-				0937F7FE280A010900A3A272 /* CharacterListV2TableViewController.swift */,
+				0937F7FE280A010900A3A272 /* CharacterListViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0937F800280A07EF00A3A272 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				093488E62808AA9A00F7B4ED /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0937F801280A081E00A3A272 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				093488DD2808AA9700F7B4ED /* AppDelegate.swift */,
+				093488DF2808AA9700F7B4ED /* SceneDelegate.swift */,
+				093488FD2808BCE900F7B4ED /* Constants.swift */,
+				093488EB2808AA9A00F7B4ED /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,7 +208,7 @@
 				093488FE2808BCE900F7B4ED /* Constants.swift in Sources */,
 				093488E02808AA9700F7B4ED /* SceneDelegate.swift in Sources */,
 				093488F22808B00600F7B4ED /* CharacterTableViewCell.swift in Sources */,
-				0937F7FF280A010900A3A272 /* CharacterListV2TableViewController.swift in Sources */,
+				0937F7FF280A010900A3A272 /* CharacterListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +358,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RickAndMorty/Info.plist;
+				INFOPLIST_FILE = "RickAndMorty/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -371,7 +387,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RickAndMorty/Info.plist;
+				INFOPLIST_FILE = "RickAndMorty/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
