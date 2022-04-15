@@ -29,13 +29,19 @@ class CharacterTableViewCell: UITableViewCell {
             self.genderLabel.text = characterInfo.gender
         }
         
-        let imageData = ImageManager.shared.fetchImage(from: characterInfo.image)
-        
-        if let imageData = imageData {
+        ImageManager.shared.fetchImage(from: characterInfo.image) { imageData in
             DispatchQueue.main.async {
                 self.avatarImageView.image = UIImage(data: imageData)
             }
         }
+        
+//        let imageData = ImageManager.shared.fetchImage(from: characterInfo.image)
+//
+//        if let imageData = imageData {
+//            DispatchQueue.main.async {
+//                self.avatarImageView.image = UIImage(data: imageData)
+//            }
+        
 
     }
 }

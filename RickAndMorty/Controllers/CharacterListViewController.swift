@@ -14,7 +14,7 @@ class CharacterListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NetworkManager.shared.fetchData(from: K.fetchAllCharactersAPI) { character in
+        NetworkManager.shared.fetchCharactersPage(from: K.fetchAllCharactersAPI) { character in
             self.character = character
             self.tableView.reloadData()
         }
@@ -43,18 +43,26 @@ class CharacterListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCharacter = character?.results[indexPath.row]
-        showCharacterInfo(characterInfo: currentCharacter)
+//        let currentCharacter = character?.results[indexPath.row]
+//        showCharacterInfo(characterInfo: currentCharacter)
+        let characterId = character?.results[indexPath.row].id
+        showCharacterInfo(characterId: characterId ?? -1)
     }
 
      // MARK: - Navigation
 
-    func showCharacterInfo(characterInfo: Result?) {
-        if let characterInfo = characterInfo {
-            let controller = storyboard?.instantiateViewController(withIdentifier: K.detailVCIndentifier) as! CharacterDetailViewController
-            controller.CharacterInfo = characterInfo
-            navigationController?.pushViewController(controller, animated: true)
-        }
+//    func showCharacterInfo(characterInfo: Result?) {
+//        if let characterInfo = characterInfo {
+//            let controller = storyboard?.instantiateViewController(withIdentifier: K.detailVCIndentifier) as! CharacterDetailViewController
+//            controller.characterInfo = characterInfo
+//            navigationController?.pushViewController(controller, animated: true)
+//        }
+//    }
+    
+    func showCharacterInfo(characterId: Int) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: K.detailVCIndentifier) as! CharacterDetailViewController
+        controller.characterId = characterId
+        navigationController?.pushViewController(controller, animated: true)
     }
 
 }

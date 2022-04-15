@@ -10,4 +10,5 @@ struct K {
     static let detailCellIdentifier = "DetailCell"
     static let detailVCIndentifier = "DetailViewController"
     static let fetchAllCharactersAPI = "https://rickandmortyapi.com/api/character"
+    static let fetchCharacterDetailAPI = "https://rickandmortyapi.com/api/character/$"
 }
