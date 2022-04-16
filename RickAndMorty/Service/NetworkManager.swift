@@ -19,10 +19,11 @@ final class NetworkManager {
     private init() {}
     
     func fetchData<T:Codable>(
+        pagination: Bool = false,
         urlString: String,
         expecting: T.Type,
         completionHandler: @escaping (Swift.Result<T, Error>) -> Void) {
-
+            
         guard let url = URL(string: urlString) else {
             completionHandler(.failure(CustomError.invalidURL))
             return

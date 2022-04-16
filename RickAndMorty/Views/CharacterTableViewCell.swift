@@ -21,15 +21,16 @@ class CharacterTableViewCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
     }
     
-    func configure(with characterInfo: Result!) {
+    //func configure(with character: Character) {
+    func configure(for character: Character) {
         
         DispatchQueue.main.async {
-            self.nameLabel.text = characterInfo.name
-            self.speciesLabel.text = characterInfo.species
-            self.genderLabel.text = characterInfo.gender
+            self.nameLabel.text = character.name
+            self.speciesLabel.text = character.species
+            self.genderLabel.text = character.gender
         }
         
-        ImageManager.shared.fetchImage(from: characterInfo.image) { imageData in
+        ImageManager.shared.fetchImage(from: character.image) { imageData in
             DispatchQueue.main.async {
                 self.avatarImageView.image = UIImage(data: imageData)
             }

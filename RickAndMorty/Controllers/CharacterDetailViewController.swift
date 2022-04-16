@@ -15,7 +15,7 @@ class CharacterDetailViewController: UIViewController {
     
     var characterId = -1
     var numberOfEpisodes = 0
-    var characterInfo: Result? {
+    var character: Character? {
         didSet {
             setImage()
             setName()
@@ -36,17 +36,17 @@ class CharacterDetailViewController: UIViewController {
     
     func fetchCharacterInfo() {
         
-        let urlString = K.fetchCharacterDetailAPI.replacingOccurrences(of: "$", with: String(characterId))
+        let urlString = K.characterDetailsAPI.replacingOccurrences(of: "$", with: String(characterId))
         
         NetworkManager.shared.fetchData(
             urlString: urlString,
-            expecting: Result.self
+            expecting: Character.self
         ) { [weak self] callResult in
             switch callResult {
-            case .success(let characterInfo):
+            case .success(let character):
+                self?.character = character
+                self?.numberOfEpisodes = character.episode.count
                 DispatchQueue.main.async {
-                    self?.characterInfo = characterInfo
-                    self?.numberOfEpisodes = characterInfo.episode.count
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
@@ -58,8 +58,8 @@ class CharacterDetailViewController: UIViewController {
     
     func setImage() {
         
-        if let characterInfo = characterInfo {
-            ImageManager.shared.fetchImage(from: characterInfo.image) { imageData in
+        if let character = character {
+            ImageManager.shared.fetchImage(from: character.image) { imageData in
                 DispatchQueue.main.async {
                     self.imageView.image = UIImage(data: imageData)
                 }
@@ -68,7 +68,9 @@ class CharacterDetailViewController: UIViewController {
     }
     
     func setName() {
-        nameLabel.text = characterInfo?.name
+        DispatchQueue.main.async {
+            self.nameLabel.text = self.character?.name
+        }
     }
     
 }
@@ -89,10 +91,10 @@ extension CharacterDetailViewController: UITableViewDataSource, UITableViewDeleg
         var cellText = ""
         
         switch indexPath.section {
-        case 0: cellText = characterInfo?.status ?? ""
-        case 1: cellText = characterInfo?.gender ?? ""
-        case 2: cellText = characterInfo?.species ?? ""
-        case 3: cellText = characterInfo?.location.name ?? ""
+        case 0: cellText = character?.status ?? ""
+        case 1: cellText = character?.gender ?? ""
+        case 2: cellText = character?.species ?? ""
+        case 3: cellText = character?.location.name ?? ""
         case 4: cellText = numberOfEpisodes > 0 ? String(numberOfEpisodes) : ""
         default: cellText = ""
         }
