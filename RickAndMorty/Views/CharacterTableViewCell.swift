@@ -34,14 +34,6 @@ class CharacterTableViewCell: UITableViewCell {
                 self.avatarImageView.image = UIImage(data: imageData)
             }
         }
-        
-//        let imageData = ImageManager.shared.fetchImage(from: characterInfo.image)
-//
-//        if let imageData = imageData {
-//            DispatchQueue.main.async {
-//                self.avatarImageView.image = UIImage(data: imageData)
-//            }
-        
 
     }
 }

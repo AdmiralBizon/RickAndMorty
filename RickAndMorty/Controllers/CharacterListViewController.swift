@@ -13,14 +13,26 @@ class CharacterListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        NetworkManager.shared.fetchCharactersPage(from: K.fetchAllCharactersAPI) { character in
-            self.character = character
-            self.tableView.reloadData()
-        }
-        
+        fetchCharactersPage()
     }
 
+    func fetchCharactersPage() {
+        NetworkManager.shared.fetchData(
+            urlString: K.fetchAllCharactersAPI,
+            expecting: Character.self
+        ) { [weak self] callResult in
+            switch callResult {
+            case .success(let character):
+                DispatchQueue.main.async {
+                    self?.character = character
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,40 +41,23 @@ class CharacterListViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! CharacterTableViewCell
-        
         cell.configure(with: character?.results[indexPath.row])
-        
-//        ImageManager.shared.fetchImage(from: currentCharacter?.image) { imageData in
-//            cell.avatarImageView.image = UIImage(data: imageData!)
-//        }
-//
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let currentCharacter = character?.results[indexPath.row]
-//        showCharacterInfo(characterInfo: currentCharacter)
         let characterId = character?.results[indexPath.row].id
         showCharacterInfo(characterId: characterId ?? -1)
     }
 
      // MARK: - Navigation
-
-//    func showCharacterInfo(characterInfo: Result?) {
-//        if let characterInfo = characterInfo {
-//            let controller = storyboard?.instantiateViewController(withIdentifier: K.detailVCIndentifier) as! CharacterDetailViewController
-//            controller.characterInfo = characterInfo
-//            navigationController?.pushViewController(controller, animated: true)
-//        }
-//    }
     
     func showCharacterInfo(characterId: Int) {
         let controller = storyboard?.instantiateViewController(withIdentifier: K.detailVCIndentifier) as! CharacterDetailViewController
         controller.characterId = characterId
         navigationController?.pushViewController(controller, animated: true)
     }
-
+    
 }

@@ -79,7 +79,7 @@
                             <outlet property="delegate" destination="k5T-da-GOz" id="Rze-mM-at8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Rick and Morty" id="yal-Wr-sXe">
+                    <navigationItem key="navigationItem" title="Rick and Morty" largeTitleDisplayMode="never" id="yal-Wr-sXe">
                         <barButtonItem key="backBarButtonItem" title="Rick and Morty" id="CVR-iY-J4t"/>
                     </navigationItem>
                 </tableViewController>
@@ -142,6 +142,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="urF-ps-92f" id="Hal-Kx-HAT"/>
+                                    <outlet property="delegate" destination="urF-ps-92f" id="xje-Kp-OlO"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARQ-1d-vtd">

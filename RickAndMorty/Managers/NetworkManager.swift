@@ -7,87 +7,73 @@
 
 import Foundation
 
-class NetworkManager {
+enum CustomError: Error {
+    case invalidURL
+    case invalidData
+}
+
+final class NetworkManager {
     
     static let shared = NetworkManager()
     
     private init() {}
     
-    func fetchCharactersPage(from urlString: String, with completionHandler: @escaping (Character) -> Void) {
+    func fetchData<T:Codable>(
+        urlString: String,
+        expecting: T.Type,
+        completionHandler: @escaping (Swift.Result<T, Error>) -> Void) {
 
-        guard let url = URL(string: urlString) else { return }
-
-        URLSession.shared.dataTask(with: url) { data, _, error in
-
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-
-            guard let data = data else { return }
-
-            do {
-                let character = try JSONDecoder().decode(Character.self, from: data)
-                DispatchQueue.main.async {
-                    completionHandler(character)
-                }
-            } catch let jsonError {
-                print(jsonError.localizedDescription)
-            }
-        }.resume()
-    }
-    
-    func fetchCharacterDetails(from urlString: String, with completionHandler: @escaping (Result) -> Void) {
-
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: urlString) else {
+            completionHandler(.failure(CustomError.invalidURL))
+            return
+        }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
 
             if let error = error {
-                print(error.localizedDescription)
+                completionHandler(.failure(error))
                 return
             }
 
-            guard let data = data else { return }
+            guard let data = data else {
+                completionHandler(.failure(CustomError.invalidData))
+                return
+            }
 
             do {
-                let characterDetails = try JSONDecoder().decode(Result.self, from: data)
-                DispatchQueue.main.async {
-                    completionHandler(characterDetails)
-                }
-            } catch let jsonError {
-                print(jsonError.localizedDescription)
+                let decodedData = try JSONDecoder().decode(expecting, from: data)
+                completionHandler(.success(decodedData))
+            } catch {
+                completionHandler(.failure(error))
             }
         }.resume()
     }
 
 }
 
-class ImageManager {
+final class ImageManager {
     
     static let shared = ImageManager()
     
     private init() {}
     
-//    func fetchImage(from url: String?) -> Data? {
-//        guard let stringURL = url else { return nil }
-//        guard let imageURL = URL(string: stringURL) else { return nil }
-//
-//        return try? Data(contentsOf: imageURL)
-//    }
-    
     func fetchImage(from url: String?, with completionHandler: @escaping (Data) -> Void) {
         guard let stringURL = url else { return }
         guard let imageURL = URL(string: stringURL) else { return }
         
-        do {
-            let imageData = try Data(contentsOf: imageURL)
-            DispatchQueue.main.async {
+        URLSession.shared.dataTask(with: imageURL) { data, _, error in
+
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+
+            if let imageData = data {
                 completionHandler(imageData)
             }
-        } catch let imageError {
-            print(imageError.localizedDescription)
-        }
+            
+        }.resume()
+        
     }
     
 }

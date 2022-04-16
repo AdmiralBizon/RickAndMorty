@@ -19,46 +19,50 @@ class CharacterDetailViewController: UIViewController {
         didSet {
             setImage()
             setName()
-//            if let characterInfo = characterInfo {
-//                ImageManager.shared.fetchImage(from: characterInfo.image) { imageData in
-//                    self.imageView.image = UIImage(data: imageData)
-//                }
-//            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //nameLabel.text = characterInfo.name
-        
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.frame.height / 2
         
         if characterId != -1 {
-        
-            NetworkManager.shared.fetchCharacterDetails(from: K.fetchCharacterDetailAPI.replacingOccurrences(of: "$", with: String(characterId))) { characterInfo in
-                self.characterInfo = characterInfo
-                self.numberOfEpisodes = characterInfo.episode.count
-                self.tableView.reloadData()
-            }
-        
+            fetchCharacterInfo()
         }
-            
-        //setImage()
+        
+    }
+    
+    func fetchCharacterInfo() {
+        
+        let urlString = K.fetchCharacterDetailAPI.replacingOccurrences(of: "$", with: String(characterId))
+        
+        NetworkManager.shared.fetchData(
+            urlString: urlString,
+            expecting: Result.self
+        ) { [weak self] callResult in
+            switch callResult {
+            case .success(let characterInfo):
+                DispatchQueue.main.async {
+                    self?.characterInfo = characterInfo
+                    self?.numberOfEpisodes = characterInfo.episode.count
+                    self?.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
         
     }
     
     func setImage() {
         
-//        let imageData = ImageManager.shared.fetchImage(from: characterInfo.image)
-//        if let imageData = imageData {
-//            imageView.image = UIImage(data: imageData)
-//        }
-        
         if let characterInfo = characterInfo {
             ImageManager.shared.fetchImage(from: characterInfo.image) { imageData in
-                self.imageView.image = UIImage(data: imageData)
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(data: imageData)
+                }
             }
         }
     }
