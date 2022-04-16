@@ -21,7 +21,6 @@ class CharacterTableViewCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2
     }
     
-    //func configure(with character: Character) {
     func configure(for character: Character) {
         
         DispatchQueue.main.async {
