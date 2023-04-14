@@ -18,6 +18,10 @@
 		093488FE2808BCE900F7B4ED /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093488FD2808BCE900F7B4ED /* Constants.swift */; };
 		0937F7FD2809EE1400A3A272 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937F7FC2809EE1400A3A272 /* CharacterDetailViewController.swift */; };
 		0937F7FF280A010900A3A272 /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0937F7FE280A010900A3A272 /* CharactersListViewController.swift */; };
+		B27C465E29E94243005AFB60 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B27C465D29E94243005AFB60 /* Alamofire */; };
+		B2B4204829E883A800BE35D5 /* DebugScreen in Frameworks */ = {isa = PBXBuildFile; productRef = B2B4204729E883A800BE35D5 /* DebugScreen */; };
+		B2B4204B29E883F100BE35D5 /* NetworkActivityMonitor in Frameworks */ = {isa = PBXBuildFile; productRef = B2B4204A29E883F100BE35D5 /* NetworkActivityMonitor */; };
+		B2B4204D29E8863E00BE35D5 /* DebugScreenActionsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B4204C29E8863E00BE35D5 /* DebugScreenActionsProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,7 @@
 		093488FD2808BCE900F7B4ED /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0937F7FC2809EE1400A3A272 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 		0937F7FE280A010900A3A272 /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
+		B2B4204C29E8863E00BE35D5 /* DebugScreenActionsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugScreenActionsProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +46,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B27C465E29E94243005AFB60 /* Alamofire in Frameworks */,
+				B2B4204829E883A800BE35D5 /* DebugScreen in Frameworks */,
+				B2B4204B29E883F100BE35D5 /* NetworkActivityMonitor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				093488F62808B32600F7B4ED /* NetworkManager.swift */,
+				B2B4204C29E8863E00BE35D5 /* DebugScreenActionsProvider.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -146,6 +155,11 @@
 			dependencies = (
 			);
 			name = RickAndMorty;
+			packageProductDependencies = (
+				B2B4204729E883A800BE35D5 /* DebugScreen */,
+				B2B4204A29E883F100BE35D5 /* NetworkActivityMonitor */,
+				B27C465D29E94243005AFB60 /* Alamofire */,
+			);
 			productName = RickAndMorty;
 			productReference = 093488DA2808AA9700F7B4ED /* RickAndMorty.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +188,11 @@
 				Base,
 			);
 			mainGroup = 093488D12808AA9700F7B4ED;
+			packageReferences = (
+				B2B4204629E883A800BE35D5 /* XCRemoteSwiftPackageReference "debug-screen-ios" */,
+				B2B4204929E883F100BE35D5 /* XCRemoteSwiftPackageReference "NetworkActivityMonitor" */,
+				B27C465C29E94243005AFB60 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 093488DB2808AA9700F7B4ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,6 +227,7 @@
 				093488FE2808BCE900F7B4ED /* Constants.swift in Sources */,
 				093488E02808AA9700F7B4ED /* SceneDelegate.swift in Sources */,
 				093488F22808B00600F7B4ED /* CharacterTableViewCell.swift in Sources */,
+				B2B4204D29E8863E00BE35D5 /* DebugScreenActionsProvider.swift in Sources */,
 				0937F7FF280A010900A3A272 /* CharactersListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,7 +305,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -340,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -365,7 +385,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -394,7 +414,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -430,6 +450,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B27C465C29E94243005AFB60 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B2B4204629E883A800BE35D5 /* XCRemoteSwiftPackageReference "debug-screen-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/surfstudio/debug-screen-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		B2B4204929E883F100BE35D5 /* XCRemoteSwiftPackageReference "NetworkActivityMonitor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AdmiralBizon/NetworkActivityMonitor";
+			requirement = {
+				branch = "add-main-flow";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B27C465D29E94243005AFB60 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B27C465C29E94243005AFB60 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		B2B4204729E883A800BE35D5 /* DebugScreen */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2B4204629E883A800BE35D5 /* XCRemoteSwiftPackageReference "debug-screen-ios" */;
+			productName = DebugScreen;
+		};
+		B2B4204A29E883F100BE35D5 /* NetworkActivityMonitor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2B4204929E883F100BE35D5 /* XCRemoteSwiftPackageReference "NetworkActivityMonitor" */;
+			productName = NetworkActivityMonitor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 093488D22808AA9700F7B4ED /* Project object */;
 }
