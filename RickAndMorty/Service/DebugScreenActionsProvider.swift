@@ -6,23 +6,28 @@
 //
 
 import DebugScreen
-import NetworkActivityMonitor
+import netfox
+import NetShears
 
 final class DebugScreenActionsProvider: ActionsProvider {
 
     func makeActions() -> [ActionsProviderModel] {
-        let networkMonitorActionModel = ActionModel(title: "Open") {
-            NetworkActivityMonitor.shared.open()
+        let openNetfoxConsoleAction = ActionModel(title: "Netfox") {
+            NFX.sharedInstance().show()
         }
 
-        let consoleActionProviderModel = ActionsProviderModel(
-            header: "Network activity monitor",
+        let openNetShearsConsoleAction = ActionModel(title: "NetShears") {
+            NetShears.shared.presentNetworkMonitor()
+        }
+
+        let consoleActionsProviderModel = ActionsProviderModel(
+            header: "Network monitors",
             title: "Open",
-            message: "Network activity monitor will open after click",
-            actions: [networkMonitorActionModel]
+            message: "Console will open after click",
+            actions: [openNetfoxConsoleAction, openNetShearsConsoleAction]
         )
 
-        return [consoleActionProviderModel]
+        return [consoleActionsProviderModel]
     }
 
 }

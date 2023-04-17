@@ -6,14 +6,16 @@
 //
 
 import UIKit
-import NetworkActivityMonitor
 import DebugScreen
+import netfox
+import NetShears
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        NetworkActivityMonitor.shared.loggingType = .sessionProxy
+        configureNetFox()
+        configureNetShears()
         DebugScreenConfiguration.shared.actionsProvider = DebugScreenActionsProvider()
         return true
     }
@@ -22,6 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    }
+
+}
+
+
+// MARK: - Private Methods
+
+private extension AppDelegate {
+
+    func configureNetFox() {
+        NFX.sharedInstance().setGesture(.custom) // disable open by shake device
+        NFX.sharedInstance().start()
+    }
+
+    func configureNetShears() {
+        NetShears.shared.startLogger()
     }
 
 }

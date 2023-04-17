@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "alamofire",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Alamofire/Alamofire",
-      "state" : {
-        "revision" : "78424be314842833c04bc3bef5b72e85fff99204",
-        "version" : "5.6.4"
-      }
-    },
-    {
       "identity" : "debug-screen-ios",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/surfstudio/debug-screen-ios",
@@ -19,21 +10,21 @@
       }
     },
     {
-      "identity" : "networkactivitymonitor",
+      "identity" : "netfox",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/AdmiralBizon/NetworkActivityMonitor",
+      "location" : "https://github.com/kasketis/netfox",
       "state" : {
-        "branch" : "add-main-flow",
-        "revision" : "33dbbb1127b460096b89227ec4b4d0981764dd8e"
+        "revision" : "557576032736fd3140422baefb68b8f76c55088f",
+        "version" : "1.21.0"
       }
     },
     {
-      "identity" : "pulse",
+      "identity" : "netshears",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kean/Pulse",
+      "location" : "https://github.com/divar-ir/NetShears",
       "state" : {
-        "revision" : "36cb6f05affbf7840fa27cde1b65257f54fdc88c",
-        "version" : "3.5.7"
+        "revision" : "b2da539cd3c749b892de7b85b18eda9e213c1bae",
+        "version" : "3.4.2"
       }
     }
   ],
